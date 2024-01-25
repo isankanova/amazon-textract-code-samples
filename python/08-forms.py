@@ -2,7 +2,7 @@ import boto3
 from trp import Document
 
 # Document
-documentName = "employmentapp.png"
+documentName = "/Users/novait/Documents/Bill Simple Project/Caterplus_Invoic_Sample_JPG/000aad25-9d60-43a4-916f-b094009ac873.jpg"
 
 # Amazon Textract client
 textract = boto3.client('textract')
@@ -27,14 +27,14 @@ for page in doc.pages:
 
     # Get field by key
     print("\nGet Field by Key:")
-    key = "Phone Number:"
+    key = "DATE:"
     field = page.form.getFieldByKey(key)
     if(field):
         print("Key: {}, Value: {}".format(field.key, field.value))
 
     # Search fields by key
     print("\nSearch Fields:")
-    key = "address"
+    key = "GST"
     fields = page.form.searchFieldsByKey(key)
     for field in fields:
         print("Key: {}, Value: {}".format(field.key, field.value))

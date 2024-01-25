@@ -2,7 +2,7 @@ import boto3
 from trp import Document
 
 # Document
-documentName = "expense.png"
+documentName = "/Users/novait/Documents/Bill Simple Project/Caterplus_Invoic_Sample_JPG/000aad25-9d60-43a4-916f-b094009ac873.jpg"
 
 # Amazon Textract client
 textract = boto3.client('textract')
@@ -34,6 +34,7 @@ for page in doc.pages:
             itemName  = ""
             for c, cell in enumerate(row.cells):
                 print("Table[{}][{}] = {}".format(r, c, cell.text))
+                
                 if(c == 0):
                     itemName = cell.text
                 elif(c == 4 and isFloat(cell.text)):
